@@ -21,6 +21,9 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--action', default='train')
 parser.add_argument('--dataset', default="50salads")
 parser.add_argument('--split', default='1')
+#parser.add_argument('--features_dim', default='2048')
+parser.add_argument('--features_dim', default='768')
+parser.add_argument('--features_dir_name', default='features')
 parser.add_argument('--model_dir', default='models')
 parser.add_argument('--result_dir', default='results')
 
@@ -31,7 +34,7 @@ num_epochs = 120
 lr = 0.0005
 num_layers = 10
 num_f_maps = 64
-features_dim = 2048
+features_dim = int(args.features_dim)
 bz = 1
 
 channel_mask_rate = 0.3
@@ -54,7 +57,7 @@ if args.dataset == 'breakfast':
 
 vid_list_file = "./data/"+args.dataset+"/splits/train.split"+args.split+".bundle"
 vid_list_file_tst = "./data/"+args.dataset+"/splits/test.split"+args.split+".bundle"
-features_path = "./data/"+args.dataset+"/features/"
+features_path = "./data/"+args.dataset+"/"+args.features_dir_name+"/"
 gt_path = "./data/"+args.dataset+"/groundTruth/"
  
 mapping_file = "./data/"+args.dataset+"/mapping.txt"

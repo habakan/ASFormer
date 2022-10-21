@@ -93,7 +93,7 @@ class BatchGenerator(object):
         batch_input = []
         batch_target = []
         for idx, vid in enumerate(batch):
-            features = np.load(batch_features[idx])
+            features = np.load(batch_features[idx]).T[:, :-7]
             file_ptr = open(batch_gts[idx], 'r')
             content = file_ptr.read().split('\n')[:-1]
             classes = np.zeros(min(np.shape(features)[1], len(content)))
