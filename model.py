@@ -406,8 +406,7 @@ class Trainer:
                 batch_input, batch_target, mask, vids = batch_gen_tst.next_batch(1)
                 vid = vids[0]
 #                 print(vid)
-                features = np.load(features_path + vid.split('.')[0] + '.npy')
-                features = features[:, ::sample_rate]
+                features = np.load(features_path + vid.split('.')[0] + '.npy').T[:, :-7]
 
                 input_x = torch.tensor(features, dtype=torch.float)
                 input_x.unsqueeze_(0)
